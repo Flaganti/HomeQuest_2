@@ -39,6 +39,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
             Naloga naloga = app.getAll().vrniVse().get(Integer.parseInt(pozicija));
             opis.setText(naloga.getOpis());
             tocke.setText(naloga.getTocke().toString());
+            spinner.setSelection(naloga.getNamePos());
         }
         else{
             Button btnPotrdi = (Button)findViewById(R.id.btnPotrdi);
@@ -53,9 +54,12 @@ public class ActivityNalogaClick extends AppCompatActivity {
         EditText tocke = (EditText) findViewById(R.id.etTokce);
         if(button.getText().toString().equals("Potrdi")) {
             app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setOpis(opis.getText().toString());
+            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setTocke(Integer.parseInt(tocke.getText().toString()));
+            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setName(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString());
+            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setNamePos(((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition());
         }
         else if(button.getText().toString().equals("Shrani")){
-            app.getAll().dodaj(new Naloga(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString(),opis.getText().toString(),new Date(), Integer.parseInt(tocke.getText().toString())));
+            app.getAll().dodaj(new Naloga(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString(),opis.getText().toString(),new Date(), Integer.parseInt(tocke.getText().toString()),((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition()));
         }
         else{
             app.getAll().vrniVse().remove(Integer.parseInt(pozicija));

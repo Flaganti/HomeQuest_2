@@ -12,16 +12,18 @@ public class Naloga {
     Date datum_objave;
     Date datum_do;
     Integer tocke;
+    int namePos;
 
     public Naloga(){
         datum_objave = new Date();
     }
-    public Naloga(String name,String opis,Date datum_do,Integer tocke){
+    public Naloga(String name,String opis,Date datum_do,Integer tocke,int namePos){
         datum_objave = new Date();
         this.name = name;
         this.opis = opis;
         this.datum_do=datum_do;
         this.tocke = tocke;
+        this.namePos = namePos;
     }
 
     public Date getDatum_objave() {
@@ -58,5 +60,13 @@ public class Naloga {
 
     public void setDatum_do(Date datum_do) {
         this.datum_do = datum_do;
+    }
+
+    public int getNamePos() {
+        return namePos;
+    }
+
+    public void setNamePos(int namePos) {
+        this.namePos = namePos;
     }
 }

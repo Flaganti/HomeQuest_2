@@ -40,23 +40,24 @@ public class DataAll {
 
     public static DataAll napolni(){
         DataAll all = new DataAll();
-        all.dodaj(new Naloga("Posoda", "", new Date(), 15));
-        all.dodaj(new Naloga("Posoda", "", new Date(), 15));
-        all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15));
-        all.dodaj(new Naloga("Tla", "pometi tla", new Date(), 15));
-        all.dodaj(new Naloga("Perilo", "Zlikaj perilo", new Date(), 15));
-        all.dodaj(new Naloga("Posoda", "pospravi posodo", new Date(), 15));
-        all.dodaj(new Naloga("Posoda", "Daj posodo v pomivalni stroj", new Date(), 15));
-        all.dodaj(new Naloga("Dvorišče", "Pospravi dvorišče", new Date(), 115));
-        all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15));
-        all.dodaj(new Naloga("Perilo", "Zlikaj perilo", new Date(), 15));
-        all.dodaj(new Naloga("Selitev", "Pomagaj Janezu pri selitvi", new Date(),300));
+        all.dodaj(new Naloga("Posoda", "", new Date(), 15,0));
+        all.dodaj(new Naloga("Posoda", "", new Date(), 15,0));
+        all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15,2));
+        all.dodaj(new Naloga("Tla", "pometi tla", new Date(), 15,1));
+        all.dodaj(new Naloga("Perilo", "Zlikaj perilo", new Date(), 15,2));
+        all.dodaj(new Naloga("Posoda", "pospravi posodo", new Date(), 15,0));
+        all.dodaj(new Naloga("Posoda", "Daj posodo v pomivalni stroj", new Date(), 15,0));
+        all.dodaj(new Naloga("Dvorišče", "Pospravi dvorišče", new Date(), 115,3));
+        all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15,2));
+        all.dodaj(new Naloga("Perilo", "Zlikaj perilo", new Date(), 15,2));
+        all.dodaj(new Naloga("Selitev", "Pomagaj Janezu pri selitvi", new Date(),300,6));
         all.dodaj("Posoda");
         all.dodaj("Tla");
         all.dodaj("Perilo");
         all.dodaj("Dvorišče");
         all.dodaj("Živali");
         all.dodaj("Hrana");
+        all.dodaj("Selitev");
         return all;
     }
     @Override
