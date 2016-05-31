@@ -13,10 +13,10 @@ public class Naloga {
     Date datum_do;
     Integer tocke;
 
-    Naloga(){
+    public Naloga(){
         datum_objave = new Date();
     }
-    Naloga(String name,String opis,Date datum_do,Integer tocke){
+    public Naloga(String name,String opis,Date datum_do,Integer tocke){
         datum_objave = new Date();
         this.name = name;
         this.opis = opis;

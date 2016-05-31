@@ -15,6 +15,7 @@
         android:text="Opravilo:"
         android:id="@+id/txtViewOpravilo"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         />
@@ -67,17 +68,9 @@
         android:id="@+id/imgViewSlika"
         android:src="@mipmap/ic_launcher"
         android:layout_below="@+id/etOpis"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Shrani"
-        android:id="@+id/btnShrani"
-        android:layout_marginLeft="5dp"
-        android:layout_alignTop="@+id/imgViewSlika"
-        android:layout_toEndOf="@+id/imgViewSlika" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -86,7 +79,20 @@
         android:text="Zbrisi"
         android:id="@+id/btnZbrisi"
         android:layout_below="@+id/btnShrani"
-        android:layout_alignStart="@+id/btnShrani" />
+        android:layout_alignStart="@+id/btnShrani"
+        android:layout_alignLeft="@+id/btnShrani"
+        android:onClick="buttonOnClick" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Shrani"
+        android:id="@+id/btnShrani"
+        android:onClick="buttonOnClick"
+        android:layout_below="@+id/etOpis"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -95,7 +101,8 @@
         android:text="Potrdi"
         android:id="@+id/btnPotrdi"
         android:layout_below="@+id/btnZbrisi"
-        android:layout_alignStart="@+id/btnShrani"
-        />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="buttonOnClick" />
 
 </RelativeLayout>
