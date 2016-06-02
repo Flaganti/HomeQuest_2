@@ -40,4 +40,7 @@ public class ApplicationMy extends Application {
         }
         return false;
     }
+    /*TODO: funkcija za branje in pisanja jsona iz spleta, zaradi sinhronizacije in za rain!
+
+     */
 }

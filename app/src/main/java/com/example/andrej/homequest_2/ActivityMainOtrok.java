@@ -1,64 +1,59 @@
 package com.example.andrej.homequest_2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.content.Intent;
-
 
 import com.example.Naloga;
 
 import java.util.ArrayList;
 
-public class ActivityMain extends AppCompatActivity {
-    int oseba;
-    private int selekcija;
+public class ActivityMainOtrok extends AppCompatActivity {
+
     private ApplicationMy app;
+    private int oseba;
+    private int selekcija;
     private ListView listView;
-    Custom_ListView_Adapter customListViewAdapter;
-    private RecyclerView recyclerView;
+    private Custom_ListView_Adapter customListViewAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_activity_main_otrok);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         app = (ApplicationMy) getApplication();
-        oseba=getIntent().getIntExtra("oseba",1);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                Intent intent = new Intent(ActivityMain.this, ActivityNalogaClick.class);
-                startActivity(intent);
+                ArrayList<Naloga> nekaj = app.getAll().vrniPotrjene();
+                int tocke=0;
+                for(Naloga n:nekaj) tocke+=n.getTocke();
+                Snackbar.make(view, "Zbral si: "+tocke+" točk", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
         selekcija=1;
         customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-        listView = (ListView) findViewById(R.id.naloga);
+        listView = (ListView) findViewById(R.id.naloga2);
         ArrayList<Naloga> list = app.getAll().vrniNaloge();
         for(Naloga sa: list) customListViewAdapter.add(sa);
         listView.setAdapter(customListViewAdapter);
         listView.setOnItemClickListener(onListClick);
-
-
-
     }
+
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-
-
-            Intent intent = new Intent(ActivityMain.this, ActivityNalogaClick.class);
+            Intent intent = new Intent(ActivityMainOtrok.this, ActivityNalogaClickOtrok.class);
             int[] in = new int[]{position,selekcija};
             intent.putExtra("opravilo",in);
             startActivity(intent);
@@ -89,7 +84,7 @@ public class ActivityMain extends AppCompatActivity {
             //TODO: odpri novi activiti
             selekcija=1;
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-            listView = (ListView) findViewById(R.id.naloga);
+            listView = (ListView) findViewById(R.id.naloga2);
             ArrayList<Naloga> list = app.getAll().vrniNaloge();
             for(Naloga sa: list) customListViewAdapter.add(sa);
             listView.setAdapter(customListViewAdapter);
@@ -100,7 +95,7 @@ public class ActivityMain extends AppCompatActivity {
             //TODO: odrpi novi activiti
             selekcija=2;
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-            listView = (ListView) findViewById(R.id.naloga);
+            listView = (ListView) findViewById(R.id.naloga2);
             ArrayList<Naloga> list = app.getAll().vrniOpravljene();
 
             for(Naloga sa: list) customListViewAdapter.add(sa);
@@ -112,7 +107,7 @@ public class ActivityMain extends AppCompatActivity {
             //TODO: odrpi novi activiti
             selekcija=3;
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-            listView = (ListView) findViewById(R.id.naloga);
+            listView = (ListView) findViewById(R.id.naloga2);
             ArrayList<Naloga> list = app.getAll().vrniPotrjene();
             for(Naloga sa: list) customListViewAdapter.add(sa);
             listView.setAdapter(customListViewAdapter);
@@ -125,9 +120,10 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+        super.onResume();
         if(selekcija==1){
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-            listView = (ListView) findViewById(R.id.naloga);
+            listView = (ListView) findViewById(R.id.naloga2);
             ArrayList<Naloga> list = app.getAll().vrniNaloge();
             for(Naloga sa: list) customListViewAdapter.add(sa);
             listView.setAdapter(customListViewAdapter);
@@ -135,7 +131,7 @@ public class ActivityMain extends AppCompatActivity {
         }
         else if(selekcija==2){
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-            listView = (ListView) findViewById(R.id.naloga);
+            listView = (ListView) findViewById(R.id.naloga2);
             ArrayList<Naloga> list = app.getAll().vrniOpravljene();
             for(Naloga sa: list) customListViewAdapter.add(sa);
             listView.setAdapter(customListViewAdapter);
@@ -143,12 +139,12 @@ public class ActivityMain extends AppCompatActivity {
         }
         else {
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(), R.layout.custom_listview_layout);
-            listView = (ListView) findViewById(R.id.naloga);
+            listView = (ListView) findViewById(R.id.naloga2);
             ArrayList<Naloga> list = app.getAll().vrniPotrjene();
             for (Naloga sa : list) customListViewAdapter.add(sa);
             listView.setAdapter(customListViewAdapter);
             listView.setOnItemClickListener(onListClick);
         }
-
     }
+
 }

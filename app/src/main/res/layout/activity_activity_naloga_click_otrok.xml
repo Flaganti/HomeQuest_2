@@ -9,67 +9,70 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.andrej.homequest_2.ActivityNalogaClick">
+    tools:context="com.example.andrej.homequest_2.ActivityNalogaClickOtrok">
 
     <TextView
         android:layout_width="70dp"
         android:layout_height="60dp"
         android:text="Opravilo:"
-        android:id="@+id/txtViewOpravilo"
+        android:id="@+id/txtViewOpravilo2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         />
 
-    <Spinner
+    <TextView
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_toRightOf="@+id/txtViewOpravilo"
-        android:layout_marginTop="10dp"/>
+        android:id="@+id/spinner2"
+        android:layout_toRightOf="@+id/txtViewOpravilo2"
+        android:layout_marginTop="10dp"
+        />
 
     <TextView
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:text="Točke"
-        android:id="@+id/txtTocke"
-        android:layout_toRightOf="@+id/spinner"
+        android:id="@+id/txtTocke2"
+        android:layout_toRightOf="@+id/spinner2"
         android:textSize="17dp"
         android:layout_marginTop="10dp"
 
         />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+
         android:ems="5"
-        android:id="@+id/etTokce"
-        android:layout_toRightOf="@+id/txtTocke"
-        android:layout_alignParentRight="true"/>
+        android:id="@+id/etTokce2"
+        android:layout_toRightOf="@+id/txtTocke2"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/txtTocke2"
+        android:layout_alignTop="@+id/txtTocke2" />
     <TextView
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:text="Opis:"
-        android:id="@+id/txtOpis"
-        android:layout_below="@+id/txtViewOpravilo"
+        android:id="@+id/txtOpis2"
+        android:layout_below="@+id/txtViewOpravilo2"
         android:textSize="15dp"
         />
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/etOpis"
-        android:layout_below="@+id/txtOpis"/>
+        android:id="@+id/etOpis2"
+        android:layout_below="@+id/txtOpis2"/>
 
     <ImageView
         android:layout_width="240dp"
         android:layout_height="200dp"
         android:id="@+id/imgViewSlika"
         android:src="@mipmap/ic_launcher"
-        android:layout_below="@+id/etOpis"
+        android:layout_below="@+id/etOpis2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true" />
@@ -78,33 +81,12 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Zbrisi"
-        android:id="@+id/btnZbrisi"
-        android:layout_below="@+id/btnShrani"
-        android:layout_alignStart="@+id/btnShrani"
-        android:layout_alignLeft="@+id/btnShrani"
-        android:onClick="buttonOnClick" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Shrani"
-        android:id="@+id/btnShrani"
+        android:text="Opravi"
+        android:id="@+id/btnShrani2"
         android:onClick="buttonOnClick"
-        android:layout_below="@+id/etOpis"
+        android:layout_below="@+id/etOpis2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Potrdi"
-        android:id="@+id/btnPotrdi"
-        android:layout_below="@+id/btnZbrisi"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="buttonOnClick" />
 
 </RelativeLayout>
