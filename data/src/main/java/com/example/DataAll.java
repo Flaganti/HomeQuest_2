@@ -10,22 +10,36 @@ import java.util.List;
 
 public class DataAll {
     ArrayList<Naloga> naloge;
+    ArrayList<Naloga> naloge_opravljene;
+    ArrayList<Naloga> naloge_potrjene;
 
 
     public ArrayList<String> opravila;
 
     public DataAll() {
         this.naloge = new ArrayList<>();
+        this.naloge_potrjene = new ArrayList<>();
+        this.naloge_opravljene = new ArrayList<>();
         this.opravila = new ArrayList<>();
     }
 
     public void dodaj(Naloga n) {
         this.naloge.add(n);
     }
+    public void dodaj_opraljene(Naloga n){this.naloge_opravljene.add(n);}
+
+    public void dodaj_potrjene(Naloga n){this.naloge_potrjene.add(n);}
+
     public void dodaj(String s){this.opravila.add(s);}
 
-    public ArrayList<Naloga> vrniVse() {
+    public ArrayList<Naloga> vrniNaloge() {
         return this.naloge;
+    }
+    public ArrayList<Naloga> vrniOpravljene(){
+        return  this.naloge_opravljene;
+    }
+    public ArrayList<Naloga> vrniPotrjene(){
+        return  this.naloge_potrjene;
     }
 
     public ArrayList<Naloga> isci(String nekaj) {

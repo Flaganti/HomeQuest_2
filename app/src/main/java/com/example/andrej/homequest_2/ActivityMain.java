@@ -2,7 +2,6 @@ package com.example.andrej.homequest_2;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 public class ActivityMain extends AppCompatActivity {
     private ApplicationMy app;
     private ListView listView;
+    Custom_ListView_Adapter customListViewAdapter;
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class ActivityMain extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Custom_ListView_Adapter customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+        customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
         listView = (ListView) findViewById(R.id.naloga);
-        ArrayList<Naloga> list = app.getAll().vrniVse();
+        ArrayList<Naloga> list = app.getAll().vrniNaloge();
         for(Naloga sa: list) customListViewAdapter.add(sa);
         listView.setAdapter(customListViewAdapter);
         listView.setOnItemClickListener(onListClick);
@@ -85,5 +85,15 @@ public class ActivityMain extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+        listView = (ListView) findViewById(R.id.naloga);
+        ArrayList<Naloga> list = app.getAll().vrniNaloge();
+        for(Naloga sa: list) customListViewAdapter.add(sa);
+        listView.setAdapter(customListViewAdapter);
+        listView.setOnItemClickListener(onListClick);
     }
 }

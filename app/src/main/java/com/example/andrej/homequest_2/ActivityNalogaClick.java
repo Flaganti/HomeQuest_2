@@ -1,17 +1,14 @@
 package com.example.andrej.homequest_2;
 
-import android.app.Application;
-import android.support.annotation.IntegerRes;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.example.DataAll;
 import com.example.Naloga;
 
 import java.util.Date;
@@ -36,7 +33,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
             Button btnShrani = (Button)findViewById(R.id.btnShrani);
             btnShrani.setClickable(false);
             pozicija = getIntent().getStringExtra("opravilo");
-            Naloga naloga = app.getAll().vrniVse().get(Integer.parseInt(pozicija));
+            Naloga naloga = app.getAll().vrniNaloge().get(Integer.parseInt(pozicija));
             opis.setText(naloga.getOpis());
             tocke.setText(naloga.getTocke().toString());
             spinner.setSelection(naloga.getNamePos());
@@ -53,16 +50,21 @@ public class ActivityNalogaClick extends AppCompatActivity {
         EditText opis = (EditText) findViewById(R.id.etOpis);
         EditText tocke = (EditText) findViewById(R.id.etTokce);
         if(button.getText().toString().equals("Potrdi")) {
-            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setOpis(opis.getText().toString());
-            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setTocke(Integer.parseInt(tocke.getText().toString()));
-            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setName(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString());
-            app.getAll().vrniVse().get(Integer.parseInt(pozicija)).setNamePos(((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition());
+            app.getAll().vrniNaloge().get(Integer.parseInt(pozicija)).setOpis(opis.getText().toString());
+            app.getAll().vrniNaloge().get(Integer.parseInt(pozicija)).setTocke(Integer.parseInt(tocke.getText().toString()));
+            app.getAll().vrniNaloge().get(Integer.parseInt(pozicija)).setName(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString());
+            app.getAll().vrniNaloge().get(Integer.parseInt(pozicija)).setNamePos(((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition());
+            Snackbar.make(v, "Spremembe so bile shranjene", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
         }
         else if(button.getText().toString().equals("Shrani")){
             app.getAll().dodaj(new Naloga(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString(),opis.getText().toString(),new Date(), Integer.parseInt(tocke.getText().toString()),((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition()));
+            Snackbar.make(v, "Naloga je bila dodana", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+
         }
         else{
-            app.getAll().vrniVse().remove(Integer.parseInt(pozicija));
+            app.getAll().vrniNaloge().remove(Integer.parseInt(pozicija));
         }
     }
 }
