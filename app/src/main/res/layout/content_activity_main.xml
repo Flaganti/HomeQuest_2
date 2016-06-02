@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/naloga"
         android:clickable="true"
-        android:layout_alignParentTop="true"
-         />
+        android:layout_alignParentTop="true" />
+
 
 </android.support.constraint.ConstraintLayout>

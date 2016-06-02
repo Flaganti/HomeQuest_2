@@ -18,6 +18,8 @@ import com.example.Naloga;
 import java.util.ArrayList;
 
 public class ActivityMain extends AppCompatActivity {
+    int oseba;
+    private int selekcija;
     private ApplicationMy app;
     private ListView listView;
     Custom_ListView_Adapter customListViewAdapter;
@@ -29,7 +31,7 @@ public class ActivityMain extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         app = (ApplicationMy) getApplication();
-
+        oseba=getIntent().getIntExtra("oseba",1);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class ActivityMain extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        selekcija=1;
         customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
         listView = (ListView) findViewById(R.id.naloga);
         ArrayList<Naloga> list = app.getAll().vrniNaloge();
@@ -54,12 +57,10 @@ public class ActivityMain extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
 
-            //TODO: odpri novi activity
 
             Intent intent = new Intent(ActivityMain.this, ActivityNalogaClick.class);
-            //Gson gson = new Gson();
-            //String Json = gson.toJson(n);
-            intent.putExtra("opravilo",Integer.toString(position));
+            int[] in = new int[]{position,selekcija};
+            intent.putExtra("opravilo",in);
             startActivity(intent);
         }
 
@@ -81,6 +82,41 @@ public class ActivityMain extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            return true;
+        }
+        else if(id == R.id.action_neopravljene){
+            //TODO: odpri novi activiti
+            selekcija=1;
+            customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+            listView = (ListView) findViewById(R.id.naloga);
+            ArrayList<Naloga> list = app.getAll().vrniNaloge();
+            for(Naloga sa: list) customListViewAdapter.add(sa);
+            listView.setAdapter(customListViewAdapter);
+            listView.setOnItemClickListener(onListClick);
+            return true;
+        }
+        else if(id == R.id.action_opravljene){
+            //TODO: odrpi novi activiti
+            selekcija=2;
+            customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+            listView = (ListView) findViewById(R.id.naloga);
+            ArrayList<Naloga> list = app.getAll().vrniOpravljene();
+
+            for(Naloga sa: list) customListViewAdapter.add(sa);
+            listView.setAdapter(customListViewAdapter);
+            listView.setOnItemClickListener(onListClick);
+            return true;
+        }
+        else if(id == R.id.action_potrjene){
+            //TODO: odrpi novi activiti
+            selekcija=3;
+            customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+            listView = (ListView) findViewById(R.id.naloga);
+            ArrayList<Naloga> list = app.getAll().vrniPotrjene();
+            for(Naloga sa: list) customListViewAdapter.add(sa);
+            listView.setAdapter(customListViewAdapter);
+            listView.setOnItemClickListener(onListClick);
             return true;
         }
 
@@ -89,11 +125,30 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
-        listView = (ListView) findViewById(R.id.naloga);
-        ArrayList<Naloga> list = app.getAll().vrniNaloge();
-        for(Naloga sa: list) customListViewAdapter.add(sa);
-        listView.setAdapter(customListViewAdapter);
-        listView.setOnItemClickListener(onListClick);
+        if(selekcija==1){
+            customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+            listView = (ListView) findViewById(R.id.naloga);
+            ArrayList<Naloga> list = app.getAll().vrniNaloge();
+            for(Naloga sa: list) customListViewAdapter.add(sa);
+            listView.setAdapter(customListViewAdapter);
+            listView.setOnItemClickListener(onListClick);
+        }
+        else if(selekcija==2){
+            customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
+            listView = (ListView) findViewById(R.id.naloga);
+            ArrayList<Naloga> list = app.getAll().vrniOpravljene();
+            for(Naloga sa: list) customListViewAdapter.add(sa);
+            listView.setAdapter(customListViewAdapter);
+            listView.setOnItemClickListener(onListClick);
+        }
+        else {
+            customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(), R.layout.custom_listview_layout);
+            listView = (ListView) findViewById(R.id.naloga);
+            ArrayList<Naloga> list = app.getAll().vrniPotrjene();
+            for (Naloga sa : list) customListViewAdapter.add(sa);
+            listView.setAdapter(customListViewAdapter);
+            listView.setOnItemClickListener(onListClick);
+        }
+
     }
 }

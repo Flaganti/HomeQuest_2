@@ -27,7 +27,6 @@ public class DataAll {
         this.naloge.add(n);
     }
     public void dodaj_opraljene(Naloga n){this.naloge_opravljene.add(n);}
-
     public void dodaj_potrjene(Naloga n){this.naloge_potrjene.add(n);}
 
     public void dodaj(String s){this.opravila.add(s);}
@@ -72,6 +71,10 @@ public class DataAll {
         all.dodaj("Živali");
         all.dodaj("Hrana");
         all.dodaj("Selitev");
+        all.dodaj_opraljene(new Naloga("Perilo", "Pomagaj Janezu pri selitvi", new Date(),300,2));
+        all.dodaj_opraljene(new Naloga("Posoda", "Pomagaj Janezu pri selitvi", new Date(),300,0));
+        all.dodaj_opraljene(new Naloga("Tla", "Pomagaj Janezu pri selitvi", new Date(),300,1));
+        all.dodaj_opraljene(new Naloga("Dvorišče", "Pomagaj Janezu pri selitvi", new Date(),300,3));
         return all;
     }
     @Override
