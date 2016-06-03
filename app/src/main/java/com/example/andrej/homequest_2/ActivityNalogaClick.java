@@ -20,6 +20,7 @@ import java.util.List;
 public class ActivityNalogaClick extends AppCompatActivity {
     private ApplicationMy app;
     private int[] pozicija;
+    //TODO: Searilizacija
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
