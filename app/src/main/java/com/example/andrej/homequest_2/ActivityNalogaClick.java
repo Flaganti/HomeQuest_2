@@ -41,6 +41,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
                 case 1: //Neopravljena
                     btnShrani = (Button) findViewById(R.id.btnShrani);
                     btnShrani.setVisibility(View.GONE);
+                    btnShrani.setVisibility(View.VISIBLE);
                     btnPotrdi = (Button)findViewById(R.id.btnPotrdi);
                     btnPotrdi.setVisibility(View.GONE);
                     btnZbrisi = (Button)findViewById(R.id.btnZbrisi);
@@ -106,6 +107,8 @@ public class ActivityNalogaClick extends AppCompatActivity {
             app.getAll().vrniNaloge().remove(pozicija[0]);
             Snackbar.make(v, "Naloga je zbrisana", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+
+            app.getAll().vrniNaloge().remove(pozicija);
         }
     }
 
