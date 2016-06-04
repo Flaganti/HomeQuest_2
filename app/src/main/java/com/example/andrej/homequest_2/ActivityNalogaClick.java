@@ -1,9 +1,8 @@
 package com.example.andrej.homequest_2;
 
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -111,6 +110,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
 
             app.getAll().vrniNaloge().remove(pozicija);
         }
+        app.save();
     }
 
     @Override
@@ -137,6 +137,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
             app.getAll().vrniNaloge().get(pozicija[0]).setNamePos(((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition());
             Snackbar.make(view, "Spremembe so bile shranjene", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+            app.save();
             return true;}
 
 

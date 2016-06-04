@@ -6,16 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.Naloga;
-
-import java.util.Date;
-import java.util.List;
 
 public class ActivityNalogaClickOtrok extends AppCompatActivity {
     private ApplicationMy app;
@@ -72,6 +66,7 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
             Snackbar.make(v, "Naloga je opravljena", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
+        app.save();
     }
 
     @Override
@@ -93,6 +88,7 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
             //TODO: Slikaj in shrani sliko. Ko je slika shranjena lahko shrani prez, da se nalogo odda.
             Snackbar.make(view, "Spremembe so bile shranjene", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+            app.save();
             return true;}
 
 

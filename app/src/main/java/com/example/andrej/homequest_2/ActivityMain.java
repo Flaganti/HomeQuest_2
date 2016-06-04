@@ -125,6 +125,7 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+        app.load();
         if(selekcija==1){
             customListViewAdapter = new Custom_ListView_Adapter(getApplicationContext(),R.layout.custom_listview_layout);
             listView = (ListView) findViewById(R.id.naloga);
