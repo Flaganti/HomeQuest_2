@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.andrej.homequest_2.ActivityMain" >
+    <item android:id="@+id/action_neopravljene"
+        android:title="Neopravljene"
+        android:orderInCategory="1"/>
+    <item android:id="@+id/action_opravljene"
+        android:title="Opravljene"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/action_potrjene"
+        android:title="Potrjene"
+        android:orderInCategory="3"/>
+    <item android:id="@+id/action_logout"
+        android:title="Izpis"
+        android:orderInCategory="5"/>
+    <item android:id="@+id/action_qrcode"
+        android:title="Skrita naloga"
+        android:orderInCategory="4"/>
+</menu>
