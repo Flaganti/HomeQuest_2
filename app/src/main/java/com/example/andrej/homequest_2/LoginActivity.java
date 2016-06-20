@@ -56,4 +56,16 @@ public class LoginActivity extends AppCompatActivity {
                     .setAction("Action", null).show();
         }
     }
+    public void NapolniOtrok(View v){
+        EditText email= (EditText)findViewById(R.id.editText);
+        EditText password= (EditText)findViewById(R.id.editText2);
+        email.setText("janez2020");
+        password.setText("janez2020");
+    }
+    public void NapolniStars(View v){
+        EditText email= (EditText)findViewById(R.id.editText);
+        EditText password= (EditText)findViewById(R.id.editText2);
+        email.setText("andrej.531.knez");
+        password.setText("admin1234");
+    }
 }

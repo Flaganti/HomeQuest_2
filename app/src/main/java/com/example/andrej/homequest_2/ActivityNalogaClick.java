@@ -33,6 +33,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
         spinner.setAdapter(adapter);
         EditText opis = (EditText) findViewById(R.id.etOpis);
         EditText tocke = (EditText) findViewById(R.id.etTokce);
+        tocke.setText("0");
         if(getIntent().getIntArrayExtra("opravilo")!=null) {
             pozicija = getIntent().getIntArrayExtra("opravilo");
             Button btnShrani,btnPotrdi,btnZbrisi;
@@ -41,7 +42,6 @@ public class ActivityNalogaClick extends AppCompatActivity {
                 case 1: //Neopravljena
                     btnShrani = (Button) findViewById(R.id.btnShrani);
                     btnShrani.setVisibility(View.GONE);
-                    btnShrani.setVisibility(View.VISIBLE);
                     btnPotrdi = (Button)findViewById(R.id.btnPotrdi);
                     btnPotrdi.setVisibility(View.GONE);
                     btnZbrisi = (Button)findViewById(R.id.btnZbrisi);
@@ -111,6 +111,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
             app.getAll().vrniNaloge().remove(pozicija);
         }
         app.save();
+        finish();
     }
 
     @Override

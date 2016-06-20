@@ -2,7 +2,6 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Andrej-PC on 30. 05. 2016.
@@ -63,14 +62,12 @@ public class DataAll {
         all.dodaj(new Naloga("Dvorišče", "Pospravi dvorišče", new Date(), 115,3));
         all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15,2));
         all.dodaj(new Naloga("Perilo", "Zlikaj perilo", new Date(), 15,2));
-        all.dodaj(new Naloga("Selitev", "Pomagaj Janezu pri selitvi", new Date(),300,6));
         all.dodaj("Posoda");
         all.dodaj("Tla");
         all.dodaj("Perilo");
         all.dodaj("Dvorišče");
         all.dodaj("Živali");
         all.dodaj("Hrana");
-        all.dodaj("Selitev");
         all.dodaj_opraljene(new Naloga("Perilo", "Pomagaj Janezu pri selitvi", new Date(),300,2));
         all.dodaj_opraljene(new Naloga("Posoda", "Pomagaj Janezu pri selitvi", new Date(),300,0));
         all.dodaj_opraljene(new Naloga("Tla", "Pomagaj Janezu pri selitvi", new Date(),300,1));

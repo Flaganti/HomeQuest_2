@@ -22,8 +22,8 @@ import java.io.PrintWriter;
 
 public class ApplicationMy extends Application {
     private DataAll all;
-    private static final String DATA_MAP = "oglasimapa";
-    private static final String FILE_NAME = "oglas.json";
+    private static final String DATA_MAP = "Podatki";
+    private static final String FILE_NAME = "naloge.json";
     @Override
     public void onCreate(){
         super.onCreate();

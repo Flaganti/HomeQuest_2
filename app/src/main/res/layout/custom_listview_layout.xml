@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/custom_listview_layout"
-    android:layout_width="match_parent" android:layout_height="85dp"
-    android:background="#add8e6">
+    android:layout_width="match_parent" android:layout_height="88dp"
+    android:background="@drawable/borders">
     <TextView
         android:id="@+id/view_starsi_pogled_textview"
         android:layout_width="230dp"
@@ -13,16 +13,20 @@
         android:textSize="30dp"
         android:textColor="#000000"
         />
+
     <ImageView
         android:id="@+id/view_starsi_pogled_opravljeno"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_toRightOf="@+id/view_starsi_pogled_textview"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="8dp"
         android:background="#ffffff"
-        android:layout_below="@+id/view_starsi_pogled_textview">
+        android:layout_below="@+id/view_starsi_pogled_textview"
+        android:id="@+id/view">
     </View>
 </RelativeLayout>

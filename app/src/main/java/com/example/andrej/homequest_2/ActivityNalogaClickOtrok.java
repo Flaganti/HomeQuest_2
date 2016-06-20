@@ -67,6 +67,7 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
                     .setAction("Action", null).show();
         }
         app.save();
+        finish();
     }
 
     @Override

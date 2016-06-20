@@ -78,17 +78,6 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Zbrisi"
-        android:id="@+id/btnZbrisi"
-        android:layout_below="@+id/btnShrani"
-        android:layout_alignStart="@+id/btnShrani"
-        android:layout_alignLeft="@+id/btnShrani"
-        android:onClick="buttonOnClick" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
         android:text="Shrani"
         android:id="@+id/btnShrani"
         android:onClick="buttonOnClick"
@@ -106,5 +95,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="buttonOnClick" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Zbrisi"
+        android:id="@+id/btnZbrisi"
+        android:onClick="buttonOnClick"
+        android:layout_below="@+id/btnShrani"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

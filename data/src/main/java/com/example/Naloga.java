@@ -13,6 +13,8 @@ public class Naloga {
     Date datum_do;
     Integer tocke;
     int namePos;
+    boolean slika;
+    boolean opravljeno;
 
     public Naloga(){
         datum_objave = new Date();
@@ -24,6 +26,8 @@ public class Naloga {
         this.datum_do=datum_do;
         this.tocke = tocke;
         this.namePos = namePos;
+        this.slika = false;
+        this.opravljeno=false;
     }
 
     public Date getDatum_objave() {
@@ -69,4 +73,13 @@ public class Naloga {
     public void setNamePos(int namePos) {
         this.namePos = namePos;
     }
+
+    public void setSlikaPomembno ( boolean bool){this.slika = bool;}
+
+    public boolean getSlikaPomembno (){return  this.slika;}
+
+    public void setOpravljeno(boolean opravljeno){this.opravljeno=opravljeno;}
+
+    public boolean getOpravljeno(){return  this.opravljeno;}
+
 }
