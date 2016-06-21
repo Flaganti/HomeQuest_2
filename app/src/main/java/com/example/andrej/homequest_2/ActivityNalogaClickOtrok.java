@@ -1,18 +1,29 @@
 package com.example.andrej.homequest_2;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.Naloga;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 public class ActivityNalogaClickOtrok extends AppCompatActivity {
     private ApplicationMy app;
+    ImageView img;
+    Naloga naloga;
     private int[] pozicija;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +34,14 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
         TextView txtview = (TextView)findViewById(R.id.spinner2);
         TextView opis = (TextView) findViewById(R.id.etOpis2);
         TextView tocke = (TextView) findViewById(R.id.etTokce2);
+        img = (ImageView) findViewById(R.id.imgViewSlika);
+        Bitmap btmimg;
+        File dest;
+
         if(getIntent().getIntArrayExtra("opravilo")!=null) {
             pozicija = getIntent().getIntArrayExtra("opravilo");
             Button btnShrani;
-            Naloga naloga;
+
             switch (pozicija[1]){
                 case 1: //Neopravljena
                     btnShrani = (Button) findViewById(R.id.btnShrani2);
@@ -35,6 +50,20 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
                     opis.setText(naloga.getOpis());
                     tocke.setText(naloga.getTocke().toString());
                     txtview.setText(naloga.getName());
+                    img.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            // start the image capture Intent
+                            startActivityForResult(intent,10);
+                        }
+                    });
+                    dest = new File(this.getExternalFilesDir("Podatki"), ""
+                            + naloga.getSlika_pot());
+                    if(dest.exists()){
+                        btmimg = BitmapFactory.decodeFile(dest.getAbsolutePath());
+                        img.setImageBitmap(btmimg);
+                    }
                     break;
                 case 2: //Opravljena
                     btnShrani = (Button) findViewById(R.id.btnShrani2);
@@ -43,19 +72,33 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
                     opis.setText(naloga.getOpis());
                     tocke.setText(naloga.getTocke().toString());
                     txtview.setText(naloga.getName());
+                    dest = new File(this.getExternalFilesDir("Podatki"), ""
+                            + naloga.getSlika_pot());
+                    if(dest.exists()) {
+                        btmimg = BitmapFactory.decodeFile(dest.getAbsolutePath());
+                        img.setImageBitmap(btmimg);
+                    }
+
                     break;
                 case 3: //Potrjena
                     btnShrani = (Button) findViewById(R.id.btnShrani2);
                     btnShrani.setVisibility(View.GONE);
                     naloga = app.getAll().vrniPotrjene().get(pozicija[0]);
-                    opis.setText(naloga.getOpis());
+                    opis.setText(naloga.getOpis()+" "+naloga.getSlika_pot());
                     tocke.setText(naloga.getTocke().toString());
                     txtview.setText(naloga.getName());
+                    dest = new File(this.getExternalFilesDir("Podatki"), ""
+                            + naloga.getSlika_pot());
+                    if(dest.exists()) {
+                        btmimg = BitmapFactory.decodeFile(dest.getAbsolutePath());
+                        img.setImageBitmap(btmimg);
+                    }
                     break;
                 default:
             }
 
         }
+
     }
     public void buttonOnClick(View v){
         Button button = (Button) v;
@@ -94,5 +137,27 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent data){
+        if (requestCode == 10 && resultCode == RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            img.setImageBitmap(photo);
+
+            String filename =naloga.getDatum_objave().toString()+"slika"+naloga.getName();
+            app.getAll().vrniNaloge().get(pozicija[0]).setSlika_pot(filename);
+            File dest = new File(this.getExternalFilesDir("Podatki"), ""
+                    + filename);
+            try {
+                FileOutputStream out = new FileOutputStream(dest);
+                photo.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("Nekaj:", "someOtherMethod()", e);
+            }
+            app.save();
+        }
     }
 }

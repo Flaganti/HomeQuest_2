@@ -16,6 +16,10 @@ public class Naloga {
     boolean slika;
     boolean opravljeno;
 
+
+
+    String slika_pot;
+
     public Naloga(){
         datum_objave = new Date();
     }
@@ -28,6 +32,7 @@ public class Naloga {
         this.namePos = namePos;
         this.slika = false;
         this.opravljeno=false;
+        this.slika_pot="";
     }
 
     public Date getDatum_objave() {
@@ -74,12 +79,27 @@ public class Naloga {
         this.namePos = namePos;
     }
 
-    public void setSlikaPomembno ( boolean bool){this.slika = bool;}
+    public void setSlikaPomembno ( boolean bool){
+        this.slika = bool;
+    }
 
-    public boolean getSlikaPomembno (){return  this.slika;}
+    public boolean getSlikaPomembno (){
+        return  this.slika;
+    }
 
-    public void setOpravljeno(boolean opravljeno){this.opravljeno=opravljeno;}
+    public void setOpravljeno(boolean opravljeno){
+        this.opravljeno=opravljeno;
+    }
 
-    public boolean getOpravljeno(){return  this.opravljeno;}
+    public boolean getOpravljeno(){
+        return  this.opravljeno;
+    }
 
+    public String getSlika_pot() {
+        return slika_pot;
+    }
+
+    public void setSlika_pot(String slika_pot) {
+        this.slika_pot = slika_pot;
+    }
 }

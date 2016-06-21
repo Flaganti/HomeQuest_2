@@ -1,5 +1,7 @@
 package com.example.andrej.homequest_2;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +11,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.Naloga;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +38,9 @@ public class ActivityNalogaClick extends AppCompatActivity {
         EditText opis = (EditText) findViewById(R.id.etOpis);
         EditText tocke = (EditText) findViewById(R.id.etTokce);
         tocke.setText("0");
+        File dest;
+        ImageView img = (ImageView) findViewById(R.id.imgViewSlika);
+        Bitmap btmimg;
         if(getIntent().getIntArrayExtra("opravilo")!=null) {
             pozicija = getIntent().getIntArrayExtra("opravilo");
             Button btnShrani,btnPotrdi,btnZbrisi;
@@ -62,6 +69,12 @@ public class ActivityNalogaClick extends AppCompatActivity {
                     opis.setText(naloga.getOpis());
                     tocke.setText(naloga.getTocke().toString());
                     spinner.setSelection(naloga.getNamePos());
+                    dest = new File(this.getExternalFilesDir("Podatki"), ""
+                            + naloga.getSlika_pot());
+                    if(dest.exists()) {
+                        btmimg = BitmapFactory.decodeFile(dest.getAbsolutePath());
+                        img.setImageBitmap(btmimg);
+                    }
                     break;
                 case 3: //Potrjena
                     btnShrani = (Button) findViewById(R.id.btnShrani);
@@ -74,6 +87,12 @@ public class ActivityNalogaClick extends AppCompatActivity {
                     opis.setText(naloga.getOpis());
                     tocke.setText(naloga.getTocke().toString());
                     spinner.setSelection(naloga.getNamePos());
+                    dest = new File(this.getExternalFilesDir("Podatki"), ""
+                            + naloga.getSlika_pot());
+                    if(dest.exists()) {
+                        btmimg = BitmapFactory.decodeFile(dest.getAbsolutePath());
+                        img.setImageBitmap(btmimg);
+                    }
                     break;
                 default:
             }
