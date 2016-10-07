@@ -16,7 +16,7 @@ import android.content.Intent;
 import com.example.Naloga;
 
 import java.util.ArrayList;
-//test
+//test j
 public class ActivityMain extends AppCompatActivity {
     int oseba;
     private int selekcija;
