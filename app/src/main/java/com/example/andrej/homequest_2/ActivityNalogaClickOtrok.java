@@ -36,7 +36,7 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
         TextView tocke = (TextView) findViewById(R.id.etTokce2);
         img = (ImageView) findViewById(R.id.imgViewSlika);
         Bitmap btmimg;
-        File dest;
+        File dest = new File("");
 
         if(getIntent().getIntArrayExtra("opravilo")!=null) {
             pozicija = getIntent().getIntArrayExtra("opravilo");
@@ -53,13 +53,20 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
                     img.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
                             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             // start the image capture Intent
                             startActivityForResult(intent,10);
                         }
                     });
-                    dest = new File(this.getExternalFilesDir("Podatki"), ""
-                            + naloga.getSlika_pot());
+                    try {
+                        dest = new File(this.getExternalFilesDir("Podatki"), ""
+                                + naloga.getSlika_pot());
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.d("Nekaj:", "someOtherMethod()", e);
+                    }
                     if(dest.exists()){
                         btmimg = BitmapFactory.decodeFile(dest.getAbsolutePath());
                         img.setImageBitmap(btmimg);

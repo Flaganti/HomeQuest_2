@@ -4,8 +4,9 @@
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera"></uses-feature>
+    <uses-feature android:name="android.hardware.camera"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera2" />
     <application
         android:name=".ApplicationMy"
         android:allowBackup="true"
@@ -25,7 +26,12 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".ActivityNalogaClick" />
-        <activity android:name=".ActivityNalogaClickOtrok"/>
+        <activity android:name=".ActivityNalogaClickOtrok" android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ActivityMainOtrok"
             android:label="@string/title_activity_activity_main_otrok"
@@ -38,5 +44,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
+
 </manifest>
