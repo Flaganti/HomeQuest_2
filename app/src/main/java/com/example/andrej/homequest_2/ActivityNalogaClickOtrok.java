@@ -64,6 +64,7 @@ public class ActivityNalogaClickOtrok extends AppCompatActivity {
                             //Error Message:
                             // java.lang.SecurityException: Permission Denial: starting Intent { act=android.media.action.IMAGE_CAPTURE cmp=com.lge.camera/.app.CameraActivity } from ProcessRecord{6f2f0fa 12985:com.example.andrej.homequest_2/u0a191} (pid=12985, uid=10191) with revoked permission android.permission.CAMERA
                             //    at android.os.Parcel.readException(Parcel.java:1599)
+
                         }
                     });
                     try {
