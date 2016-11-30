@@ -18,7 +18,7 @@ import com.example.Naloga;
 import java.util.ArrayList;
 //test j
 public class ActivityMain extends AppCompatActivity {
-    int oseba;
+    //int oseba;
     private int selekcija;
     private ApplicationMy app;
     private ListView listView;
@@ -31,7 +31,7 @@ public class ActivityMain extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         app = (ApplicationMy) getApplication();
-        oseba=getIntent().getIntExtra("oseba",1);
+        //oseba=getIntent().getIntExtra("oseba",1);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +117,11 @@ public class ActivityMain extends AppCompatActivity {
             for(Naloga sa: list) customListViewAdapter.add(sa);
             listView.setAdapter(customListViewAdapter);
             listView.setOnItemClickListener(onListClick);
+            return true;
+        }
+        else if (id==R.id.action_trgovina){
+            Intent intent = new Intent(ActivityMain.this, ActicityTrgovina.class);
+            startActivity(intent);
             return true;
         }
 

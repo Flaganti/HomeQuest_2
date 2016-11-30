@@ -2,20 +2,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.andrej.homequest_2.ActivityMain" >
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:orderInCategory="4"
+        android:orderInCategory="5"
         app:showAsAction="never" />
+
     <item android:id="@+id/action_neopravljene"
         android:title="Neopravljene"
         android:orderInCategory="1"/>
+
     <item android:id="@+id/action_opravljene"
         android:title="Opravljene"
         android:orderInCategory="2"/>
+
     <item android:id="@+id/action_potrjene"
         android:title="Potrjene"
         android:orderInCategory="3"/>
+
+    <item android:id="@+id/action_trgovina"
+        android:title="Trgovina"
+        android:orderInCategory="4"/>
+
     <item android:id="@+id/action_logout"
         android:title="Izpis"
-        android:orderInCategory="5"/>
+        android:orderInCategory="6"/>
 </menu>

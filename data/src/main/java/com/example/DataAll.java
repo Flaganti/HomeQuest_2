@@ -11,6 +11,7 @@ public class DataAll {
     ArrayList<Naloga> naloge;
     ArrayList<Naloga> naloge_opravljene;
     ArrayList<Naloga> naloge_potrjene;
+    ArrayList<Trgovina> trgovina;
 
 
     public ArrayList<String> opravila;
@@ -20,6 +21,7 @@ public class DataAll {
         this.naloge_potrjene = new ArrayList<>();
         this.naloge_opravljene = new ArrayList<>();
         this.opravila = new ArrayList<>();
+        this.trgovina=new ArrayList<>();
     }
 
     public void dodaj(Naloga n) {
@@ -27,6 +29,7 @@ public class DataAll {
     }
     public void dodaj_opraljene(Naloga n){this.naloge_opravljene.add(n);}
     public void dodaj_potrjene(Naloga n){this.naloge_potrjene.add(n);}
+    public void dodaj_izdelek(Trgovina n){this.trgovina.add(n);}
 
     public void dodaj(String s){this.opravila.add(s);}
 
@@ -39,6 +42,7 @@ public class DataAll {
     public ArrayList<Naloga> vrniPotrjene(){
         return  this.naloge_potrjene;
     }
+    public ArrayList<Trgovina> vrniTrgovina(){return this.trgovina;}
 
     public ArrayList<Naloga> isci(String nekaj) {
         ArrayList<Naloga> najdeni = new ArrayList<>();
@@ -72,6 +76,11 @@ public class DataAll {
         all.dodaj_opraljene(new Naloga("Posoda", "Pomagaj Janezu pri selitvi", new Date(),300,0));
         all.dodaj_opraljene(new Naloga("Tla", "Pomagaj Janezu pri selitvi", new Date(),300,1));
         all.dodaj_opraljene(new Naloga("Dvorišče", "Pomagaj Janezu pri selitvi", new Date(),300,3));
+
+        all.dodaj_izdelek(new Trgovina("Pokemon karte",50000));
+        all.dodaj_izdelek(new Trgovina("Igralna konzola Nintendo Switch",150000));
+        all.dodaj_izdelek(new Trgovina("1x 10eur zepnine",50000));
+        all.dodaj_izdelek(new Trgovina("Yu-gi-oh karte",50000));
         return all;
     }
     @Override
