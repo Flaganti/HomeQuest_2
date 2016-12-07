@@ -43,14 +43,10 @@ public class ActicityTrgovina extends AppCompatActivity {
         for(Trgovina sa: list) adapter.add(sa);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(onListClick);
-
-
-
     }
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-
             Snackbar.make(view,app.getAll().vrniTrgovina().get(position).getIme_izdelka().toString()+"\n"+app.getAll().vrniTrgovina().get(position).getCena_izdelka()+" tock", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
             //TODO: TrgovinaClickActivity!
@@ -61,5 +57,4 @@ public class ActicityTrgovina extends AppCompatActivity {
         }
 
     };
-
 }
