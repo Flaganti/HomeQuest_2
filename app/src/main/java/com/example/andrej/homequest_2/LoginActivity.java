@@ -68,4 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         email.setText("andrej.531.knez");
         password.setText("admin1234");
     }
+    public void ZazeniWeka(View v){
+            Intent intent = new Intent(LoginActivity.this, Weka.class);
+            startActivity(intent);
+    }
 }
