@@ -3,10 +3,13 @@
     package="com.example.andrej.homequest_2">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- 534841403378-j25kr5pcdrj733ijg1fntpg2bpsh0299.apps.googleusercontent.com -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera2" />
@@ -54,7 +57,8 @@
             android:name=".ActicityTrgovina"
             android:label="@string/title_activity_acticity_trgovina"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Weka"></activity>
+        <activity android:name=".Weka" />
+        <activity android:name=".test12"></activity>
     </application>
 
 </manifest>
