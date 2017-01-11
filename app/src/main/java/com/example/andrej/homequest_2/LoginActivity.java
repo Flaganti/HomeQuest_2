@@ -39,7 +39,7 @@ import java.util.List;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class LoginActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public class LoginActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
     GoogleAccountCredential mCredential;
     static final int REQUEST_ACCOUNT_PICKER = 1000;
     static final int REQUEST_AUTHORIZATION = 1001;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
         setContentView(R.layout.activity_login);
         app = (ApplicationMy) getApplication();
         app.load();
-        final Button btnApi = (Button)findViewById(R.id.button7);
+       final Button btnApi = (Button)findViewById(R.id.button7);
         btnApi.setText("API CALL TEST");
         btnApi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,12 +69,12 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
                 btnApi.setEnabled(true);
             }
         });
-        mCredential = GoogleAccountCredential.usingOAuth2(
+       mCredential = GoogleAccountCredential.usingOAuth2(
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff());
 
     }
-    private void getResultsFromApi() {
+   private void getResultsFromApi() {
         if (! isGooglePlayServicesAvailable()) {
             acquireGooglePlayServices();
         } else if (mCredential.getSelectedAccountName() == null) {
@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
             startActivity(intent);
     }
 
-    private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
+   private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
         private com.google.api.services.sheets.v4.Sheets mService = null;
         private Exception mLastError = null;
 
@@ -224,7 +224,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
          * Background task to call Google Sheets API.
          * @param params no parameters needed for this task.
          */
-        @Override
+       @Override
         protected List<String> doInBackground(Void... params) {
             try {
                 return getDataFromApi();
@@ -241,7 +241,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
          * @return List of names and majors
          * @throws IOException
          */
-        private List<String> getDataFromApi() throws IOException {
+       private List<String> getDataFromApi() throws IOException {
             String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
             String range = "Class Data!A2:E";
             List<String> results = new ArrayList<String>();
