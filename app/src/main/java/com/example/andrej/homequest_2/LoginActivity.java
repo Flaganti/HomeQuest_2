@@ -1,11 +1,13 @@
 package com.example.andrej.homequest_2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.VideoView;
 
 public class LoginActivity extends AppCompatActivity{
     String[] emaili = new String[]{"andrej.531.knez","janez2020"};
@@ -18,8 +20,16 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         app = (ApplicationMy) getApplication();
         app.load();
+        VideoView videoView =null;
+        try{
+            videoView = (VideoView) findViewById(R.id.permaVideoView);
+            Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.home_quest_animation);
+            videoView.setVideoURI(video);
+            videoView.start();
+        } catch(Exception ex)
+        {   videoView.stopPlayback();
 
-
+        }
     }
     public void Login(View v){
         boolean e = false;
@@ -73,4 +83,18 @@ public class LoginActivity extends AppCompatActivity{
             startActivity(intent);
     }
 
+    @Override
+    protected void onResume() {
+        VideoView videoView =null;
+        try{
+            videoView = (VideoView) findViewById(R.id.permaVideoView);
+            Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.home_quest_animation);
+            videoView.setVideoURI(video);
+            videoView.start();
+        } catch(Exception ex)
+        {   videoView.stopPlayback();
+
+        }
+        super.onResume();
+    }
 }

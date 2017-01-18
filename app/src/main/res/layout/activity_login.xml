@@ -9,14 +9,26 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingStart="16dp">
+    <FrameLayout
+        android:layout_width="363dp"
+        android:layout_height="587dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+        <VideoView
+            android:id="@+id/permaVideoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+        <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <Button
         android:text="Prijava"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:onClick="Login"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
         android:layout_marginTop="8dp" />
 
@@ -27,7 +39,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginTop="8dp" />
 
@@ -37,7 +49,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText2"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         android:layout_marginTop="8dp" />
 
@@ -46,16 +58,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        tools:layout_editor_absoluteX="0dp"
-        app:layout_constraintTop_toTopOf="@+id/activity_login"
-        android:layout_marginTop="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+
+        tools:layout_editor_absoluteY="8dp" />
 
     <TextView
         android:text="Geslo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         android:layout_marginTop="8dp" />
 
@@ -64,10 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="24dp"
         android:onClick="NapolniOtrok"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:visibility="gone" />
+        android:visibility="gone" />
 
     <Button
         android:text="Starš"
@@ -76,14 +88,10 @@
         android:id="@+id/button3"
         android:onClick="NapolniStars"
         app:layout_constraintLeft_toRightOf="@+id/button2"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintRight_toRightOf="@+id/activity_login"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
+
         app:layout_constraintHorizontal_bias="0.94"
-        tools:visibility="gone" />
+        android:visibility="gone" />
 
     <Button
         android:text="Weka"
@@ -95,5 +103,7 @@
         app:layout_constraintRight_toLeftOf="@+id/button3"
         app:layout_constraintTop_toTopOf="@+id/button2"
         android:visibility="gone" />
+        </android.support.constraint.ConstraintLayout>
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

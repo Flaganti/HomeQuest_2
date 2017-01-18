@@ -11,7 +11,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        VideoView videoView;
+        VideoView videoView = null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         try{
@@ -26,7 +26,8 @@ public class ActivitySplashScreen extends AppCompatActivity {
                 }
             });
             videoView.start();
-        } catch(Exception ex) {
+        } catch(Exception ex)
+        {   videoView.stopPlayback();
             this.finish();
             jump();
         }
