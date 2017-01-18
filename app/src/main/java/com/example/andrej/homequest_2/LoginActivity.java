@@ -9,7 +9,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.VideoView;
 
+import com.example.Druzina;
+
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity{
+
+    ArrayList<Druzina> d;
     String[] emaili = new String[]{"andrej.531.knez","janez2020"};
     char[] vloga = new char[]{'P','C'};
     String[] gesla = new String[]{"admin1234","janez2020"};
@@ -69,8 +75,8 @@ public class LoginActivity extends AppCompatActivity{
     public void NapolniOtrok(View v){
         EditText email= (EditText)findViewById(R.id.editText);
         EditText password= (EditText)findViewById(R.id.editText2);
-        email.setText("janez2020");
-        password.setText("janez2020");
+        email.setText("janez2000");
+        password.setText("janez2000");
     }
     public void NapolniStars(View v){
         EditText email= (EditText)findViewById(R.id.editText);
@@ -81,6 +87,10 @@ public class LoginActivity extends AppCompatActivity{
     public void ZazeniWeka(View v){
             Intent intent = new Intent(LoginActivity.this, Weka.class);
             startActivity(intent);
+    }
+    public void ustvariDruzino(View v){
+        d = app.getAll().vrniDruzina();
+
     }
 
     @Override

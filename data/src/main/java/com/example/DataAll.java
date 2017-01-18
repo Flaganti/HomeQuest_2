@@ -11,6 +11,7 @@ public class DataAll {
     ArrayList<Naloga> naloge_opravljene;
     ArrayList<Naloga> naloge_potrjene;
     ArrayList<Trgovina> trgovina;
+    ArrayList<Druzina> druzina;
 
 
     public ArrayList<String> opravila;
@@ -21,6 +22,7 @@ public class DataAll {
         this.naloge_opravljene = new ArrayList<>();
         this.opravila = new ArrayList<>();
         this.trgovina=new ArrayList<>();
+        this.druzina = new ArrayList<>();
     }
 
     public void dodaj(Naloga n) {
@@ -42,6 +44,7 @@ public class DataAll {
         return  this.naloge_potrjene;
     }
     public ArrayList<Trgovina> vrniTrgovina(){return this.trgovina;}
+    public ArrayList<Druzina> vrniDruzina(){return  this.druzina;}
 
     public ArrayList<Naloga> isci(String nekaj) {
         ArrayList<Naloga> najdeni = new ArrayList<>();
