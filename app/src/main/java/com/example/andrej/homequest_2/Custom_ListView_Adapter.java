@@ -34,6 +34,7 @@ public class Custom_ListView_Adapter extends ArrayAdapter {
     static class DataHandler{
         TextView naloga;
         ImageView slika;
+        TextView tocke;
 
     }
     @Override
@@ -67,6 +68,7 @@ public class Custom_ListView_Adapter extends ArrayAdapter {
             handler = new DataHandler();
             handler.naloga = (TextView)row.findViewById(R.id.view_starsi_pogled_textview);
             handler.slika = (ImageView)row.findViewById(R.id.view_starsi_pogled_opravljeno);
+            handler.tocke = (TextView)row.findViewById(R.id.view_tocke_prikaz);
 
             row.setTag(handler);
         }
@@ -108,6 +110,7 @@ public class Custom_ListView_Adapter extends ArrayAdapter {
             else if(pogled==2){handler.slika.setImageResource(getContext().getResources().getIdentifier("android:drawable/checkbox_on_background", null, null));}
         }
         handler.naloga.setText(nalogag.getName());
+        handler.tocke.setText(nalogag.getTocke().toString());
         return row;
     }
 

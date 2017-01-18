@@ -20,6 +20,19 @@
         completions."
     </string>
     <string name="title_activity_acticity_trgovina">ActicityTrgovina</string>
+    <string-array name="spinner_opravila">
+        <item>Posoda</item>
+        <item>Prah</item>
+        <item>Perilo</item>
+        <item>Smeti</item>
+        <item>Žaganje drv</item>
+        <item>Zlaganje drv</item>
+        <item>Pomivanje avta</item>
+        <item>Dvorišče</item>
+        <item>Živali</item>
+        <item>Hrana</item>
+        <item>Tla</item>
+    </string-array>
     =======
     >>>>>>> origin/master
 </resources>

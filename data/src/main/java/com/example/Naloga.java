@@ -7,11 +7,11 @@ import java.util.Date;
  */
 
 public class Naloga {
-    String name;
+    String  name;
     String opis;
     Date datum_objave;
     Date datum_do;
-    Integer tocke;
+    int tocke;
     int namePos;
     boolean slika;
     boolean opravljeno;

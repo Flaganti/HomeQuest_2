@@ -1,7 +1,6 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Andrej-PC on 30. 05. 2016.
@@ -56,7 +55,8 @@ public class DataAll {
 
     public static DataAll napolni(){
         DataAll all = new DataAll();
-        all.dodaj(new Naloga("Posoda", "", new Date(), 15,0));
+
+        /*all.dodaj(new Naloga("Posoda", "", new Date(), 15,0));
         all.dodaj(new Naloga("Posoda", "", new Date(), 15,0));
         all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15,2));
         all.dodaj(new Naloga("Tla", "pometi tla", new Date(), 15,1));
@@ -66,12 +66,12 @@ public class DataAll {
         all.dodaj(new Naloga("Dvorišče", "Pospravi dvorišče", new Date(), 115,3));
         all.dodaj(new Naloga("Perilo", "Daj perilo prat", new Date(), 15,2));
         all.dodaj(new Naloga("Perilo", "Zlikaj perilo", new Date(), 15,2));
-        all.dodaj("Posoda");
-        all.dodaj("Tla");
-        all.dodaj("Perilo");
-        all.dodaj("Dvorišče");
-        all.dodaj("Živali");
-        all.dodaj("Hrana");
+        all.dodaj("Posoda"); //0
+        all.dodaj("Tla"); //1
+        all.dodaj("Perilo"); //2
+        all.dodaj("Dvorišče"); //3
+        all.dodaj("Živali"); //4
+        all.dodaj("Hrana"); //5
         all.dodaj_opraljene(new Naloga("Perilo", "Pomagaj Janezu pri selitvi", new Date(),300,2));
         all.dodaj_opraljene(new Naloga("Posoda", "Pomagaj Janezu pri selitvi", new Date(),300,0));
         all.dodaj_opraljene(new Naloga("Tla", "Pomagaj Janezu pri selitvi", new Date(),300,1));
@@ -80,7 +80,7 @@ public class DataAll {
         all.dodaj_izdelek(new Trgovina("Pokemon karte",50000));
         all.dodaj_izdelek(new Trgovina("Igralna konzola Nintendo Switch",150000));
         all.dodaj_izdelek(new Trgovina("1x 10eur zepnine",50000));
-        all.dodaj_izdelek(new Trgovina("Yu-gi-oh karte",50000));
+        all.dodaj_izdelek(new Trgovina("Yu-gi-oh karte",50000));*/
         return all;
     }
     @Override

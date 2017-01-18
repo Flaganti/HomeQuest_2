@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,12 +14,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.Naloga;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
-import java.util.List;
+import java.util.Random;
+
+import weka.classifiers.Evaluation;
+import weka.classifiers.lazy.IBk;
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.FastVector;
+import weka.core.Instance;
+import weka.core.Instances;
 
 public class ActivityNalogaClick extends AppCompatActivity {
     private ApplicationMy app;
@@ -30,9 +42,9 @@ public class ActivityNalogaClick extends AppCompatActivity {
         setContentView(R.layout.activity_activity_naloga_click);
 
         app = (ApplicationMy) getApplication();
-        List<String> stringArray = app.getAll().opravila;
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, stringArray);
+
+        ArrayAdapter<CharSequence> adapter =  ArrayAdapter.createFromResource(this,R.array.spinner_opravila,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         EditText opis = (EditText) findViewById(R.id.etOpis);
@@ -106,6 +118,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
         }
     }
     public void buttonOnClick(View v){
+        boolean shrani = false;
         Button button = (Button) v;
         EditText opis = (EditText) findViewById(R.id.etOpis);
         EditText tocke = (EditText) findViewById(R.id.etTokce);
@@ -115,22 +128,38 @@ public class ActivityNalogaClick extends AppCompatActivity {
             app.getAll().dodaj_potrjene(n);
             Snackbar.make(v, "Naloga je potrjena", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+            shrani=true;
+
         }
         else if(button.getText().toString().equals("Shrani")){
-            app.getAll().dodaj(new Naloga(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString(),opis.getText().toString(),new Date(), Integer.parseInt(tocke.getText().toString()),((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition()));
-            Snackbar.make(v, "Naloga je bila dodana", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+
+            try {
+                if(weka_test()!=0){
+                    shrani=true;
+                    app.getAll().dodaj(new Naloga(((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString(),opis.getText().toString(),new Date(), Integer.parseInt(tocke.getText().toString()),((Spinner)findViewById(R.id.spinner)).getSelectedItemPosition()));
+                    Snackbar.make(v, "Naloga je bila dodana", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+
+            }
+            catch (Exception e){
+                Log.d("Smth","smth");
+            }
+
 
         }
         else{
             app.getAll().vrniNaloge().remove(pozicija[0]);
             Snackbar.make(v, "Naloga je zbrisana", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
-
+            shrani=true;
             app.getAll().vrniNaloge().remove(pozicija);
         }
-        app.save();
-        finish();
+
+        if(shrani){
+            app.save();
+            finish();
+        }
     }
 
     @Override
@@ -163,4 +192,120 @@ public class ActivityNalogaClick extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public double weka_test()throws Exception{
+
+
+        double starostD = 14;
+        double tockeD = Double.parseDouble(((EditText)findViewById(R.id.etTokce)).getText().toString());
+
+        String bivStr = "hisa";//biv.getSelectedItem().toString();
+        String katStr = "hisno";//kat.getSelectedItem().toString();
+        String podStr = ((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString();
+        podStr = podStr.toLowerCase();
+        //zaganje_drv,zlaganje_drv,pomivanje_avta
+        if(podStr.equals("živali")){
+            podStr="zivali";
+        }
+        else if(podStr.equals("dvorišče")){
+            podStr="dvorisce";
+        }
+        else if(podStr.equals("zaganje drv")){
+            podStr="zaganje_drv";
+        }
+        else if(podStr.equals("zlaganje drv")){
+            podStr="zlaganje_drv";
+        }
+        else if(podStr.equals("pomivanje avta")){
+            podStr="pomivanje_avta";
+        }
+
+        String spolStr = "M";
+
+        BufferedReader breader = null;
+        File desc  = new File(this.getExternalFilesDir("Podatki"),"naloge.arff");
+        FileReader reader = new FileReader(desc.getAbsolutePath());
+        breader = new BufferedReader(reader);
+        Instances train = new Instances(breader);
+        breader.close();
+
+        train.setClassIndex(train.numAttributes() - 1);
+
+        IBk iBk = new IBk();
+        iBk.buildClassifier(train);
+        Evaluation eval = new Evaluation(train);
+        eval.crossValidateModel(iBk, train, 10, new Random(1));
+
+        Attribute starost = new Attribute("Starost");
+
+        FastVector fvbiv= new FastVector(2);
+        fvbiv.addElement("blok");
+        fvbiv.addElement("hisa");
+        Attribute bivalisce = new Attribute("Bivalisce",fvbiv);
+
+        FastVector fvkat= new FastVector(3);
+        fvkat.addElement("hisno");
+        fvkat.addElement("terensko");
+        fvkat.addElement("pomoc");
+        Attribute kategorija = new Attribute("Kategorija",fvkat);
+
+        FastVector fvpod= new FastVector(8);
+        fvpod.addElement("posoda");
+        fvpod.addElement("prah");
+        fvpod.addElement("perilo");
+        fvpod.addElement("smeti");
+        fvpod.addElement("zaganje_drv");
+        fvpod.addElement("zlaganje_drv");
+        fvpod.addElement("pomivanje_avta");
+        fvpod.addElement("tla");
+        fvpod.addElement("dvorisce");
+        fvpod.addElement("zivali");
+        fvpod.addElement("hrana");
+        Attribute podkategorija = new Attribute("Podkategorija",fvpod);
+        Attribute tocke = new Attribute("Tocke");
+
+        FastVector fvspol= new FastVector(2);
+        fvspol.addElement("M");
+        fvspol.addElement("F");
+        Attribute spol = new Attribute("Spol",fvspol);
+
+        weka.core.FastVector fvClassVal = new FastVector(3);
+        fvClassVal.addElement("slaba");
+        fvClassVal.addElement("dobra");
+        fvClassVal.addElement("odlicna");
+        Attribute Class = new Attribute("Izbira",fvClassVal);
+
+        FastVector fvWekaAttributes = new FastVector(7);
+        fvWekaAttributes.addElement(starost);
+        fvWekaAttributes.addElement(tocke);
+        fvWekaAttributes.addElement(bivalisce);
+        fvWekaAttributes.addElement(podkategorija);
+        fvWekaAttributes.addElement(kategorija);
+        fvWekaAttributes.addElement(spol);
+        fvWekaAttributes.addElement(Class);
+
+        Instances dataset = new Instances("whatever",fvWekaAttributes,0);
+        Instance instanca = new DenseInstance(6);
+        instanca.setValue(starost,starostD);
+        instanca.setValue(tocke,tockeD);
+        instanca.setValue(bivalisce,bivStr);
+        instanca.setValue(podkategorija,podStr);
+        instanca.setValue(kategorija,katStr);
+        instanca.setValue(spol,spolStr);
+
+        dataset.add(instanca);
+        dataset.setClassIndex(dataset.numAttributes()-1);
+
+
+        //TextView txt = (TextView) findViewById(R.id.txtWeka);
+        //txt.setMovementMethod(new ScrollingMovementMethod());
+        double nekaj = iBk.classifyInstance(dataset.instance(0));
+        String[] izbira = new String[]{"Prosim izberite boljše parameter. Naloga je ocenjena perslabo, da bi jo dodali","Dobro","Odlično"};
+        //txt.setText(izbira[(int)nekaj].toString());
+        Toast.makeText(this, izbira[(int)nekaj].toString(),
+                Toast.LENGTH_LONG).show();
+        return nekaj;
+    }
+
+
+
 }

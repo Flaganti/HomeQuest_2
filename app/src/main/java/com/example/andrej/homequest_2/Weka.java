@@ -130,6 +130,9 @@ public class Weka extends AppCompatActivity {
         fvpod.addElement("zlaganje_drv");
         fvpod.addElement("pomivanje_avta");
         fvpod.addElement("tla");
+        fvpod.addElement("dvorisce");
+        fvpod.addElement("zivali");
+        fvpod.addElement("hrana");
         Attribute podkategorija = new Attribute("Podkategorija",fvpod);
         Attribute tocke = new Attribute("Tocke");
 
