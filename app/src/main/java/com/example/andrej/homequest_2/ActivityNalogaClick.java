@@ -198,8 +198,8 @@ public class ActivityNalogaClick extends AppCompatActivity {
         double starostD = 14;
         double tockeD = Double.parseDouble(((EditText)findViewById(R.id.etTokce)).getText().toString());
 
-        String bivStr = "hisa";//biv.getSelectedItem().toString();
-        String katStr = "hisno";//kat.getSelectedItem().toString();
+        String bivStr = "hisa";//biv.getSelectedItem().toString(); //TODO: beri iz google spreadsheeta datum rojstva otroka
+        String katStr = "hisno";//kat.getSelectedItem().toString();//TODO: beri iz google spreadsheeta ko bo pravilno deloval
         String podStr = ((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString();
         podStr = podStr.toLowerCase();
         //zaganje_drv,zlaganje_drv,pomivanje_avta
@@ -219,7 +219,7 @@ public class ActivityNalogaClick extends AppCompatActivity {
             podStr="pomivanje_avta";
         }
 
-        String spolStr = "M";
+        String spolStr = "M"; //TODO beri spol iz google spreadsheeta! (ali ga odstrani)
 
         BufferedReader breader = null;
         File desc  = new File(this.getExternalFilesDir("Podatki"),"naloge.arff");
