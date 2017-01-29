@@ -13,7 +13,7 @@
 
     <Button
         android:text="Prijava"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:id="@+id/button"
         android:onClick="Login"
@@ -24,8 +24,8 @@
 
 
     <EditText
-        android:layout_width="363dp"
-        android:layout_height="45dp"
+        android:layout_width="329dp"
+        android:layout_height="40dp"
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText"
@@ -37,8 +37,8 @@
         android:paddingRight="5dp" />
 
     <EditText
-        android:layout_width="363dp"
-        android:layout_height="45dp"
+        android:layout_width="329dp"
+        android:layout_height="40dp"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText2"
@@ -116,8 +116,8 @@
         android:layout_marginTop="16dp"
         android:background="@raw/pinboard"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp" />
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp" />
 
 
 </android.support.constraint.ConstraintLayout>
