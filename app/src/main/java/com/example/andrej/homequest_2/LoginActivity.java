@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity{
 
     ArrayList<Druzina> d;
-    String[] emaili = new String[]{"andrej.531.knez","janez2020"};
-    char[] vloga = new char[]{'P','C'};
-    String[] gesla = new String[]{"admin1234","janez2020"};
+    String[] emaili = new String[]{"andrej.531.knez","janez2020","tadej"};
+    char[] vloga = new char[]{'P','C','P'};
+    String[] gesla = new String[]{"admin1234","janez2020","1234"};
     ApplicationMy app;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,10 @@ public class LoginActivity extends AppCompatActivity{
             startActivity(intent);
     }
     public void ustvariDruzino(View v){
-        d = app.getAll().vrniDruzina();
+        Intent intent = new Intent(LoginActivity.this, activityDruzina.class);
+        startActivity(intent);
+
+        //d = app.getAll().vrniDruzina();
 
     }
 

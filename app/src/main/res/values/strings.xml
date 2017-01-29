@@ -33,6 +33,7 @@
         <item>Hrana</item>
         <item>Tla</item>
     </string-array>
+    <string name="title_activity_druzina">activityDruzina</string>
     =======
     >>>>>>> origin/master
 </resources>
